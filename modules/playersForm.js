@@ -5,9 +5,8 @@ import { showChampionList } from "./championList.js";
 
 // function to show the form for Player names
 export const showPlayersForm = async () => {
-
   // load  HTML-Formu für names
-  const playerForm = await loadHTML("../data/names.html");
+  const playerForm = await loadHTML("./data/names.html");
 
   // add the form to the HTML
   el("#playersFormWrapper").innerHTML = playerForm;
@@ -15,10 +14,13 @@ export const showPlayersForm = async () => {
 
   let count = el("#playersCount").value;
 
-  // generate Name input for default Player count 
+  // generate Name input for default Player count
   genereateNameInput(count);
-  el("#playersCountWrapper input").addEventListener("input", genereateNameInput);
-}
+  el("#playersCountWrapper input").addEventListener(
+    "input",
+    genereateNameInput
+  );
+};
 
 // function to generate Name inputs based on selected player Count
 function genereateNameInput(count) {
@@ -31,16 +33,16 @@ function genereateNameInput(count) {
   ];
 
   // check if the input event Listener triggers
-  if(this) {
+  if (this) {
     count = this.value;
   }
 
   el("#playerNames").innerHTML = "";
 
   // dynamically genereate the inputs for selected player count
-  for(let i = 0; i < count; i++) {
+  for (let i = 0; i < count; i++) {
     const label = create("label");
-    label.innerText = `Name für Spieler ${i+1}`;
+    label.innerText = `Name für Spieler ${i + 1}`;
     label.setAttribute("for", `namePlayer${i}`);
 
     const inputName = create("input");
@@ -50,7 +52,7 @@ function genereateNameInput(count) {
     inputName.className = "namePlayer";
 
     const labelDirection = create("label");
-    labelDirection.innerText = `Startbuchstabe für Spieler ${i+1}`;
+    labelDirection.innerText = `Startbuchstabe für Spieler ${i + 1}`;
     labelDirection.setAttribute("for", `directionPlayer`);
 
     const inputDirection = create("select");
@@ -85,43 +87,47 @@ const setPlayerDataInDB = () => {
   const allDirectionSelects = group("#playerNames select");
 
   // Check if all inputs filled
-  for(let i = 0; i < allInputField.length; i++) {
-    if(!allInputField[i].value) {
+  for (let i = 0; i < allInputField.length; i++) {
+    if (!allInputField[i].value) {
       allNames = false;
       el("#error").innerText = "Fehler! Gib alle Namen ein!";
       break;
     }
   }
 
-  if(allNames) {
+  if (allNames) {
     allInputField.forEach((input, index) => {
       const pId = `player${index}`;
       const inputValue = input.value;
 
-      // adding player Data 
-      playersData.push({id: pId, name: inputValue, direction: allDirectionSelects[index].value});
-      
+      // adding player Data
+      playersData.push({
+        id: pId,
+        name: inputValue,
+        direction: allDirectionSelects[index].value,
+      });
+
       // write players Data into DB
       db.writeItem("players", playersData);
     });
 
     // adding the complete Buttons for each Player to the HTML
     genereatePlayerSides();
-    
+
     // updating the Champions List to see the complete Buttons for all Player
     showChampionList("A");
 
     el("#playersFormWrapper").className = "hide";
     el("#playersFormWrapper").innerHTML = "";
   }
-}
+};
 
 // function to generate the complete Buttons for each Player
 export const genereatePlayerSides = async () => {
   const allPlayers = await db.readItem("players");
 
   // check if there are Players in DB
-  if(allPlayers) {
+  if (allPlayers) {
     allPlayers.forEach((player) => {
       const h2 = create("h2");
       h2.className = "navPoint";
@@ -132,4 +138,4 @@ export const genereatePlayerSides = async () => {
       el("#navHeader").append(h2);
     });
   }
-}
+};
