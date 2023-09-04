@@ -1,0 +1,308 @@
+@font-face {
+    font-family: "BeaufortForLOL-Regular";
+    src: url("../fonts/BeaufortforLOL-Regular.ttf");
+}
+#myApp {
+    position: relative;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "BeaufortForLOL-Regular";
+    cursor: url(/images/cursor.png), auto;
+    background-color:#005A82;
+    position: relative;
+
+}
+#paginationWrapper {
+    text-align: center;
+}
+#paginationWrapper.hide {
+    display: none;
+}
+#pagination .letter {
+    font-size: 1.5em;
+    margin: 0;
+    width: auto;
+    padding: 0 .25em;
+}
+#pagination .letter:hover {
+    color: #091428 !important;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#pagination .letter.aktive {
+    color: #091428;
+    font-weight: bold;
+}
+#pagination .letter.passive {
+    color: black;
+}
+#pagination {
+    margin: 2em 0;
+}
+#pagination,
+#allChampions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#allChampions .oneChamp {
+    padding: 0 .5em;
+    margin: 0;
+    position: relative;
+    box-sizing: border-box;
+}
+#allChampions .oneChamp h2 {
+    background-color: rgba(255, 255, 255, .5);
+    left: 8px;
+    right: 8px;
+    text-align: center;
+    position: absolute;
+    padding: .5em 0;
+    margin: 0;
+    color: #000;
+    box-sizing: border-box;
+    font-size: 2em;
+}
+#playersFormWrapper.show {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9998;
+}
+#playersFormWrapper #completeChampForm,
+#playersFormWrapper #playerForm {
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: rgba(255, 255, 255, .75);
+    width: auto;
+    transform: translate(-50%, -50%);
+    padding: 3.5em;
+    color: black;
+    font-size: 2em;
+    text-align: center;
+}
+#playersFormWrapper #playerForm #playerNames input,
+#playersFormWrapper #playerForm #playerNames select {
+    font-size: 1em;
+    border: 2px solid black;
+    box-sizing: border-box;
+    text-align: center;
+    margin: .5em 0;
+    display: block;
+    width: 100%;
+}
+
+#playersFormWrapper #playerForm #playerNames {
+    margin: 1.5em 0 0 0;
+    box-sizing: border-box;
+}
+.btn {
+    width: 100%;
+    border: 2px solid black;
+    font-size: 1em;
+    border: 2px solid black;
+    text-align: center;
+    margin: .5em 0 0 0;
+    padding: .5em;
+    background-color: #0397AB;;
+    color: #fff;
+}
+.btn:hover {
+    background-color: #C89B3C;
+    cursor: pointer;
+}
+#navHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 1em 0;
+}
+#appHeadline {
+    font-size: 2.5em;
+    text-align: center;
+    margin: 1em 0;
+    color: #C89B3C;
+    text-shadow: 2px 8px 12px rgba(0, 0, 0, 0.5)
+}
+#navHeader h2 {
+    padding: 1.6em;
+    margin: 0;
+    border-right: 1px solid #0A323C;
+    background-color: #CDFAFA;
+}
+
+#navHeader > h2:first-child {
+    border-left: 1px solid #0A323C;
+}
+#sideNavigation {
+    background-color: #0397AB;
+}
+#navHeader h2.active,
+#navHeader h2:hover {
+    background-color: #C89B3C;
+    cursor: pointer;
+}
+#appContent {
+    background-color: #C89B3C;
+    padding: 0 0 1em 0;
+}
+#championsWrapper {
+    display: block;
+    box-sizing: border-box;
+    clear: both;
+}
+#championsWrapper.hide {
+    display: block;
+}
+#allPlayers {
+    background-color: rgba(255, 255, 255, .5);
+    left: 8px;
+    right: 8px;
+    text-align: center;
+    position: absolute;
+    margin: 0;
+    color: #000;
+    bottom: .35em;
+    box-sizing: border-box;
+}
+#allPlayers span {
+    width: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    border-right: 1px solid;
+    padding: .5em;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+#allPlayers span.completet {
+    background-color: #005A82;
+    color: #fff;
+    cursor: default !important;
+}
+#allPlayers span:hover{
+    background-color: #005A82;
+    cursor: pointer;
+    color: #fff;
+}
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 100%;
+    margin: 1.5em 0 0 0;
+    display: block;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+    background: #C89B3C;
+    height: 1.5rem;
+}
+
+input[type=range]::-webkit-slider-runnable-track,
+input[type="range"]::-moz-range-track {
+    background: #005A82;
+    height: 1rem;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -8px;
+    background-color: #005A82;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    box-shadow: 0 0 6px 2px #005A82;
+}
+#error {
+    margin: .75em 0 0 0;
+    color: red;
+}
+#completeChampForm #completeHeadline {
+    margin: 0;
+    font-size: 1.25em;
+}
+#completeChampForm {
+    text-align: left !important;
+}
+#completeChampForm .inputWrapper label,
+#completeChampForm .inputWrapper input,
+#completeChampForm .inputWrapper select {
+    width: 100%;
+    display: inline-block;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+#completeChampForm .inputWrapper label {
+    margin: .5em 0;
+}
+.oneCompletet {
+    margin: .5em 0;
+    border: 1px solid #005A82;    
+}
+.completetLegend span,
+.oneCompletet span {
+    padding: .5em 0;
+    font-size: 1.25em;
+    display: inline-block;
+    width: 200px;
+    background-color: #0397AB;
+    color:#fff;
+    font-weight: bold;
+    text-align: center;
+    box-sizing: border-box;
+    border-right: 1px solid #fff;
+}
+.completetLegend span:last-of-type,
+.oneCompletet span:last-of-type {
+    border-right: none;
+}
+.completetLegend span {
+    padding: .25em 0;
+    background-color: #3C3C41;
+}
+#nextChampion {
+    text-align: center;
+    background-color: #0A1428;
+    color: #fff;
+    margin:  0 0 .5em 0;
+}
+#nextChampion #nextChampHeadline {
+    padding: .5em 0;
+    margin: 0;
+}
+
+
+#closeCompleteForm {
+    position: absolute;
+    top: -14px;
+    right: -14px;
+    background-color: #005A82;
+    color: #fff;
+    border-radius: 50%;
+    padding: 10px;
+    height: 1.5em;
+    width: 1.5em;
+    font-size: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 3px 2px #005A82;
+    box-sizing: border-box;
+}
+
+#closeCompleteForm:hover {
+    cursor: pointer;
+    box-shadow: 0 0 3px 2px #fff;
+
+}
