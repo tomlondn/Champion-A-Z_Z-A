@@ -6,7 +6,7 @@ import { showChampionList } from "./championList.js";
 // function to show the form for Player names
 export const showPlayersForm = async () => {
   // load  HTML-Formu für names
-  const playerForm = await loadHTML("./data/names.html");
+  const playerForm = await loadHTML("../data/names.html");
 
   // add the form to the HTML
   el("#playersFormWrapper").innerHTML = playerForm;
